@@ -23,7 +23,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void increaseAgieBrieQuality() {
-		Item item = new Item(Constants.AGED_BRIE, 2, 0);
+		Item item = new Item(Constants.AGED_BRIE, 5, 2);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(3));
 	}
@@ -34,7 +34,7 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void neverIncreaseAgieBrieQuality() {
-		Item item = new Item(Constants.AGED_BRIE, 50, 0);
+		Item item = new Item(Constants.AGED_BRIE, 0, 50);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(50));
 	}
@@ -44,7 +44,7 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void increaseBackstagePassQuality() {
-		Item item = new Item(Constants.BACKSTAGE_PASSES, 15, 20);
+		Item item = new Item(Constants.BACKSTAGE_PASSES, 20, 15);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(16));
 	}
@@ -54,7 +54,7 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void increaseBackstagePassQualityByTwo() {
-		Item item = new Item(Constants.BACKSTAGE_PASSES, 15, 10);
+		Item item = new Item(Constants.BACKSTAGE_PASSES, 10, 15);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(17));
 	}
@@ -64,7 +64,7 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void increaseBackstagePassQualityByThree() {
-		Item item = new Item(Constants.BACKSTAGE_PASSES, 15, 5);
+		Item item = new Item(Constants.BACKSTAGE_PASSES, 5, 15);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(18));
 	}
@@ -74,14 +74,14 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void setBackstagePassQualityToZero() {
-		Item item = new Item(Constants.BACKSTAGE_PASSES, 15, 0);
+		Item item = new Item(Constants.BACKSTAGE_PASSES, 0, 15);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(0));
 	}
 
 	@Test
 	public void neverIncreaseBackstagePassQuality() {
-		Item item = new Item(Constants.BACKSTAGE_PASSES, 50, 5);
+		Item item = new Item(Constants.BACKSTAGE_PASSES, 5, 50);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(50));
 	}
@@ -91,7 +91,7 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void neverChangeSulfurasQuality() {
-		Item item = new Item(Constants.SULFARAS, 12, 80);
+		Item item = new Item(Constants.SULFARAS, 80, 12);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(12));
 	}
@@ -101,14 +101,14 @@ public class GildedRoseTest {
 	 */
 	@Test
 	public void DecreaseQualityByTwo() {
-		Item item = new Item(Constants.CONJURED, 12, 80);
+		Item item = new Item(Constants.CONJURED, 3, 6);
 		gildedRose.updateQuality(item);
-		assertThat(item.getQuality(), is(12));
+		assertThat(item.getQuality(), is(4));
 	}
 
 	@Test
 	public void NeverSetQualityForLessThanZero() {
-		Item item = new Item(Constants.CONJURED, 0, 4);
+		Item item = new Item(Constants.CONJURED, 4, 0);
 		gildedRose.updateQuality(item);
 		assertThat(item.getQuality(), is(0));
 	}
